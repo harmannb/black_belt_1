@@ -1,0 +1,23 @@
+<h3>Hello <%= @user.first_name %>!</h3>  <a href="/">Logout</a>
+
+
+<h2>Here are the organizations you may join:</h2>
+  <% @groups.each do |group| %>
+    <h4><%= group.group_name %></h4>
+    <p>Members: <%= @membership.count %></p>
+    <p>Description: <%= group.group_description %></p>
+  <% end %>
+
+
+
+<form action="/groups/create" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+
+  Org Name: <input type="text" name="Org Name">
+
+  Description: <input type="text" name="Description">
+
+  <button type="submit" value="Create">Create</button>
+
+</form>
